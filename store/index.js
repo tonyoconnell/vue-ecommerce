@@ -7,11 +7,15 @@ const createStore = () => {
     state: {
       cartTotal: 0,
       cart: {},
-      products: []
+      products: [],
+      globals: []
     },
     mutations: {
       setProducts (state, products) {
         state.products = products
+      },
+      setGlobals (state, globals) {
+        state.globals = globals
       },
       clearCart (state) {
         state.cart = {}
@@ -33,8 +37,8 @@ const createStore = () => {
       }
     },
     actions: {
-      nuxtServerinit ({ dispatch }, { req }) {
-        return dispatch('getProducts')
+      nuxtServerInit ({ dispatch }, { req }) {
+        return dispatch('getGlobals')
       },
       getProducts({ commit, state }) {
         const params = {
@@ -42,6 +46,16 @@ const createStore = () => {
         }
         return cosmic.getObjectsByType(params).then(data => {
           commit('setProducts', data.objects)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      getGlobals({ commit, state }) {
+        const params = {
+          type_slug: 'globals'
+        }
+        return cosmic.getObjectsByType(params).then(data => {
+          commit('setGlobals', data.objects)
         }).catch(err => {
           console.log(err)
         })

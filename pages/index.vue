@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="hero is-medium">
+    <section class="hero is-medium" :style="{ backgroundImage: `url(${hero})` }">
       <div class="hero-body">
         <div class="container">
           <h1 class="title"> Celebrate Uniquesness</h1>
@@ -46,7 +46,8 @@ export default {
   data () {
     return {
       types: ['painted', 'pattern', 'gradient'],
-      selectedTypes: []
+      selectedTypes: [],
+      hero: this.$store.state.globals[0].metadata.hero.imgix_url
     }
   },
   computed: {
@@ -67,7 +68,6 @@ export default {
 
 <style scoped>
 .hero {
-  background: url('/images/student-texting-smart-phone_925x.jpg');
   background-position: center center;
   background-size: cover;
 }
