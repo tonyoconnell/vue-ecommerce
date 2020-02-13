@@ -6,6 +6,9 @@
 
 > E-commerce app with Nuxt and [Cosmic JS](https://cosmicjs.com).  Payments processed by Stripe.
 
+#### Config!
+Get your Bucket slug and read key after [logging in to Cosmic JS](https://app.cosmicjs.com/login) and going to <i>Bucket > Settings > API Keys</i>. Set these in the `nuxt.config.js` file.
+
 ## Build Setup
 
 ``` bash
